@@ -22,16 +22,16 @@ export function TextAnimate({
   const isInView = useInView(ref, { once })
   const prefersReducedMotion = useReducedMotion()
 
-  if (prefersReducedMotion) {
-    return <span className={className}>{children}</span>
-  }
-
   const items = useMemo(() => {
     if (by === "word") {
       return children.split(" ")
     }
     return Array.from(children)
   }, [children, by])
+
+  if (prefersReducedMotion) {
+    return <span className={className}>{children}</span>
+  }
 
   const container = {
     hidden: {},

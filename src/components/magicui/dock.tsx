@@ -74,11 +74,12 @@ export function DockIcon({
   const context = useContext(DockContext)
   const ref = useRef<HTMLDivElement>(null)
 
-  if (!context) {
-    return <div className={className}>{children}</div>
-  }
-
-  const { mouseX, mouseY, distance, magnification } = context
+  const fallbackMouseX = useMotionValue(Number.POSITIVE_INFINITY)
+  const fallbackMouseY = useMotionValue(Number.POSITIVE_INFINITY)
+  const mouseX = context?.mouseX ?? fallbackMouseX
+  const mouseY = context?.mouseY ?? fallbackMouseY
+  const distance = context?.distance ?? 120
+  const magnification = context?.magnification ?? 1.5
   const scale = useTransform(mouseX, (value) => {
     const rect = ref.current?.getBoundingClientRect()
     if (!rect) return 1
