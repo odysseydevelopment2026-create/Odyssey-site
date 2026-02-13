@@ -2,9 +2,7 @@ import React, { ComponentPropsWithoutRef, CSSProperties } from "react"
 
 import { cn } from "@/lib/utils"
 
-export interface ShimmerButtonProps
-  extends ComponentPropsWithoutRef<"button">,
-    ComponentPropsWithoutRef<"a"> {
+export interface ShimmerButtonProps extends ComponentPropsWithoutRef<"button"> {
   shimmerColor?: string
   shimmerSize?: string
   borderRadius?: string
@@ -13,11 +11,10 @@ export interface ShimmerButtonProps
   shimmer?: boolean
   className?: string
   children?: React.ReactNode
-  as?: "button" | "a"
 }
 
 export const ShimmerButton = React.forwardRef<
-  HTMLButtonElement | HTMLAnchorElement,
+  HTMLButtonElement,
   ShimmerButtonProps
 >(
   (
@@ -30,15 +27,12 @@ export const ShimmerButton = React.forwardRef<
       shimmer = true,
       className,
       children,
-      as = "button",
       ...props
     },
     ref
   ) => {
-    const Comp = as
-
     return (
-      <Comp
+      <button
         style={
           {
             "--spread": "90deg",
@@ -54,7 +48,7 @@ export const ShimmerButton = React.forwardRef<
           "transform-gpu transition-transform duration-300 ease-in-out active:translate-y-px",
           className
         )}
-        ref={ref as never}
+        ref={ref}
         {...props}
       >
         {shimmer ? (
@@ -86,7 +80,7 @@ export const ShimmerButton = React.forwardRef<
             "absolute [inset:var(--cut)] -z-20 [border-radius:var(--radius)] [background:var(--bg)]"
           )}
         />
-      </Comp>
+      </button>
     )
   }
 )
