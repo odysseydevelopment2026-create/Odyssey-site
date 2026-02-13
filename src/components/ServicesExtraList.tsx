@@ -12,7 +12,7 @@ type ExtraItem = {
 
 type Props = {
   title: string
-  items: ExtraItem[]
+  items: readonly ExtraItem[]
 }
 
 const ServicesExtraList = ({ title, items }: Props) => {
