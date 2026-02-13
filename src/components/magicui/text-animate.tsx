@@ -1,7 +1,7 @@
 "use client"
 
 import { useMemo, useRef } from "react"
-import { motion, useInView, useReducedMotion } from "framer-motion"
+import { motion, useInView, useReducedMotion, type Easing } from "framer-motion"
 
 type TextAnimateProps = {
   children: string
@@ -55,7 +55,10 @@ export function TextAnimate({
             opacity: 1,
             y: 0,
             filter: "blur(0px)",
-            transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
+            transition: {
+              duration: 0.45,
+              ease: [0.16, 1, 0.3, 1] as Easing,
+            },
           },
         }
       : {
