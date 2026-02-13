@@ -1,7 +1,14 @@
 "use client"
 
 import { useRef } from "react"
-import { AnimatePresence, motion, type MotionProps, useInView, type Variants } from "framer-motion"
+import {
+  AnimatePresence,
+  motion,
+  type MotionProps,
+  useInView,
+  type Variants,
+  type UseInViewOptions,
+} from "framer-motion"
 
 interface BlurFadeProps extends MotionProps {
   children: React.ReactNode
@@ -15,7 +22,7 @@ interface BlurFadeProps extends MotionProps {
   offset?: number
   direction?: "up" | "down" | "left" | "right"
   inView?: boolean
-  inViewMargin?: string
+  inViewMargin?: UseInViewOptions["margin"]
   blur?: string
 }
 
