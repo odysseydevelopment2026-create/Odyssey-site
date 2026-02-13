@@ -58,20 +58,14 @@ const Header = () => {
         </nav>
 
         {ctaLink ? (
-          <ShimmerButton
-            as="a"
+          <a
             href={ctaLink}
             target="_blank"
             rel="noreferrer"
-            shimmerColor="#ffffff"
-            shimmerDuration="3.2s"
-            borderRadius="999px"
-            background="rgba(0,0,0,0.45)"
-            shimmer={false}
             className="hidden pointer-events-auto px-4 py-2 text-[10px] font-helvetica font-light uppercase tracking-[0.18em] text-white/90 transition-transform duration-300 ease-smooth hover:scale-[1.05] sm:inline-flex sm:px-5 sm:text-xs sm:tracking-[0.22em]"
           >
             {siteData?.header?.ctaLabel ?? 'Связаться'}
-          </ShimmerButton>
+          </a>
         ) : null}
       </div>
     </header>
