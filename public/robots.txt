@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://selison.vercel.app/sitemap.xml

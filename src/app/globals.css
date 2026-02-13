@@ -1,0 +1,249 @@
+@font-face {
+  font-family: 'ArsenalSC';
+  src: url('/fonts/ArsenalSC-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --bg: #000000;
+  --fg: #ffffff;
+  --accent: #ff0000;
+  --glass: rgba(255, 255, 255, 0.1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --font-arsenal: 'ArsenalSC';
+  --font-manrope: 'Manrope';
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+body {
+  margin: 0;
+  color: var(--fg);
+  background-color: #000000;
+  background-image: none;
+  font-family: var(--font-inter), system-ui, -apple-system, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (min-width: 1024px) and (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
+.ripple-target {
+  position: relative;
+}
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  transform: scale(0);
+  opacity: 0.35;
+  background: var(--ripple-color, rgba(255, 255, 255, 0.6));
+  animation: ripple 600ms ease-out;
+}
+
+.ripple-clip {
+  overflow: hidden !important;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+canvas {
+  display: block;
+  pointer-events: none;
+}
+
+.glass {
+  background: var(--glass);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(14px);
+}
+
+.glass-soft {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.font-manrope {
+  font-family: 'Manrope', system-ui, sans-serif !important;
+}
+
+.accent-ring {
+  box-shadow: 0 0 0 1px rgba(255, 0, 0, 0.4), 0 0 24px rgba(255, 0, 0, 0.3);
+}
+
+.liquid-time {
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.35), 0 0 2px rgba(255, 255, 255, 0.6);
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFadeUpSmall {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-title {
+  animation: heroFadeUp 0.6s var(--ease-smooth) 0.1s both;
+}
+
+.hero-cta {
+  animation: heroFadeUpSmall 0.5s var(--ease-smooth) 0.2s both;
+}
+
+
+@keyframes dotGlow {
+  0% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.03);
+  }
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+}
+
+@keyframes dotDrift {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 9px 9px;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.animate-dot-glow {
+  animation: dotGlow 6s ease-in-out infinite;
+}
+
+.animate-dot-drift {
+  animation: dotDrift 10s ease-in-out infinite;
+}
+
+@keyframes shimmer-slide {
+  to {
+    transform: translate(calc(100cqw - 100%), 0);
+  }
+}
+
+@keyframes spin-around {
+  0% {
+    transform: translateZ(0) rotate(0);
+  }
+  15%,
+  35% {
+    transform: translateZ(0) rotate(90deg);
+  }
+  65%,
+  85% {
+    transform: translateZ(0) rotate(270deg);
+  }
+  100% {
+    transform: translateZ(0) rotate(360deg);
+  }
+}
+
+.animate-shimmer-slide {
+  animation: shimmer-slide var(--speed) ease-in-out infinite alternate;
+}
+
+.animate-spin-around {
+  animation: spin-around calc(var(--speed) * 2) infinite linear;
+}
+
+@keyframes sectionReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-target:target {
+  animation: sectionReveal 0.6s var(--ease-smooth) both;
+}
+
+
+
+code, pre, kbd, samp {
+  font-family: var(--font-mono), ui-monospace, 'SFMono-Regular', monospace;
+}
