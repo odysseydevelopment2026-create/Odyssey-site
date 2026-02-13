@@ -46,25 +46,36 @@ const Footer = () => {
           <h3 className="font-arsenal text-2xl">{siteData.contacts.heading}</h3>
           <div className="flex w-full max-w-[240px] flex-col items-center gap-3">
             {siteData.contacts.items.map((item) => {
+              const fallbackIcon = (
+                <svg
+                  viewBox={item.icon.viewBox}
+                  className="h-6 w-6 text-white"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d={item.icon.path} />
+                </svg>
+              )
+
+              let iconNode = fallbackIcon
+              if (item.id === 'telegram') {
+                iconNode = (
+                  <Image src="/telegram-3.png" alt="" width={24} height={24} className="h-6 w-6" />
+                )
+              } else if (item.id === 'email') {
+                iconNode = (
+                  <Image src="/email.png" alt="" width={24} height={24} className="h-6 w-6" />
+                )
+              } else if (item.id === 'whatsapp') {
+                iconNode = (
+                  <Image src="/whatsapp.png" alt="" width={24} height={24} className="h-6 w-6" />
+                )
+              }
+
               const content = (
                 <>
                   <span className="absolute left-5 flex h-6 w-6 items-center justify-center">
-                    {item.id === 'telegram' ? (
-                      <Image src="/telegram-3.png" alt="" width={24} height={24} className="h-6 w-6" />
-                    ) : item.id === 'email' ? (
-                      <Image src="/email.png" alt="" width={24} height={24} className="h-6 w-6" />
-                    ) : item.id === 'whatsapp' ? (
-                      <Image src="/whatsapp.png" alt="" width={24} height={24} className="h-6 w-6" />
-                    ) : (
-                      <svg
-                        viewBox={item.icon.viewBox}
-                        className="h-6 w-6 text-white"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path d={item.icon.path} />
-                      </svg>
-                    )}
+                    {iconNode}
                   </span>
                   <span className="mx-auto w-[120px] text-center">{item.label}</span>
                 </>
