@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -79,13 +79,13 @@ const EmailCopyButton = ({ email, className, children }: Props) => {
                 <button
                   type="button"
                   onClick={handleCopy}
-                  className="glass-soft rounded-full border border-white/20 px-6 py-2 text-xs uppercase tracking-[0.2em] transition duration-500 ease-smooth hover:scale-[1.02]"
+                  className="rounded-full border border-white/20 bg-black/55 px-6 py-2 text-xs uppercase tracking-[0.2em] text-white transition duration-500 ease-smooth hover:scale-[1.02] hover:border-white/35"
                 >
-                  Копировать
+                  {'\u041A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u0442\u044C'}
                 </button>
                 {copied ? (
-                  <div className="rounded-full border border-white/20 px-4 py-1 text-xs text-white/70">
-                    Скопировано
+                  <div className="rounded-full border border-white/20 bg-black/45 px-4 py-1 text-xs text-white/85">
+                    {'\u0421\u043A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u043D\u043E'}
                   </div>
                 ) : null}
               </div>

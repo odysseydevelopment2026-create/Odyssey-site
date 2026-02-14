@@ -2,7 +2,7 @@
   meta: {
     title: 'Главная — Odyssey',
     description:
-      'Selison проектирует и собирает сайты-визитки с точным визуальным характером, чистой типографикой и аккуратной анимацией.',
+      'Odyssey там где идея оживает.',
     url: 'https://selison.vercel.app',
     ogImage: '/og.svg',
     keywords: [
